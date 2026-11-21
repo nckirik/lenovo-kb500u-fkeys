@@ -59,9 +59,13 @@ Meta+Lock locks the screen, and Alt+F4 reaches an RDP session as Alt+F4.
    - TR: [`apk/ExKeyMo-KB500U-Fkeys-TR.apk`](apk/ExKeyMo-KB500U-Fkeys-TR.apk)
 2. Install it on the tablet. Play Protect may warn because the APK is
    self-signed: tap **More details → Install anyway**.
-3. Open **Settings → System → Languages & input → Physical keyboard**.
-4. Select the Lenovo keyboard and choose **ExKeyMo Layout EN** or
-   **ExKeyMo Layout TR**.
+3. Open **Settings → Pen & keyboard → Lenovo Keyboard Pack for Yoga Tab Plus**.
+4. Select the language, then choose **ExKeyMo Layout EN** or
+   **ExKeyMo Layout TR** as the layout.
+
+   On builds without the Lenovo menu, use
+   **Settings → System → Languages & input → Physical keyboard** instead.
+
 5. Apply it only to the Lenovo keyboard. The overlay also remaps the standard
    volume, brightness, and mute keycodes, so using it on another keyboard would
    turn those keys into F-keys.
@@ -149,8 +153,8 @@ the old copy first.
 ## Limitations
 
 - The layout picker applies one KCM per physical keyboard.
-- If the Lenovo keyboard is not listed separately, try the global
-  **Keyboard layout** entry on the same screen.
+- If the Lenovo Keyboard Pack menu is missing, use
+  **Settings → System → Languages & input → Physical keyboard**.
 - TR uses the AOSP Turkish Q layout; Turkish F is not included.
 - Home/End are text-editing keys, not the Android Home button.
 
