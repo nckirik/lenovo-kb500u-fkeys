@@ -53,8 +53,9 @@ Meta+Lock locks the screen, and Alt+F4 reaches an RDP session as Alt+F4.
 ## Install
 
 1. Download the latest APK from
-   **[Releases](https://github.com/nckirik/lenovo-kb500u-fkeys/releases/latest)**,
-   or use the files in `apk/`:
+   **[Releases](https://github.com/nckirik/lenovo-kb500u-fkeys/releases/latest)**.
+
+   The `apk/` folder keeps the older v1.2 files:
    - EN: [`apk/ExKeyMo-KB500U-Fkeys-EN.apk`](apk/ExKeyMo-KB500U-Fkeys-EN.apk)
    - TR: [`apk/ExKeyMo-KB500U-Fkeys-TR.apk`](apk/ExKeyMo-KB500U-Fkeys-TR.apk)
 2. Install it on the tablet. Play Protect may warn because the APK is
