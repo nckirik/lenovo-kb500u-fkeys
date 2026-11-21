@@ -3,7 +3,8 @@
 No-root top-row remap for the **Lenovo Yoga Tab Plus (TB520FU)** with the
 **KB500U** keyboard cover. The custom top row becomes F1–F12, the AI/App keys
 become Home/End, and every original Lenovo action stays available with
-Ctrl/Alt/Meta.
+**Meta** (the Fn key). Ctrl and Alt are passed through, so Alt+F4 works in
+RDP and other apps.
 
 Tested on:
 
@@ -16,14 +17,15 @@ Tested on:
 
 - F1–F12 on the 12 keys between Esc and Lock
 - Home/End on the Lenovo Smart Key (AI) and App to Customize
-- Original actions on any Ctrl/Alt/Meta combination; modifiers are stripped
+- Original actions on any Meta combination; modifiers are stripped
+- Ctrl and Alt pass through, so Alt+F4, Ctrl+F4, etc. reach the app
 - Shift alone is preserved, so Shift+F1 still works
 - No root, no Key Mapper, no Shizuku
 - EN (US English) and TR (Turkish Q) builds
 
 ## Mapping
 
-| Physical key | Plain press | Ctrl / Alt / Meta + key |
+| Physical key | Plain press | Meta + key |
 |---|---|---|
 | Silent | F1 | Silent |
 | Volume Down | F2 | Volume Down |
@@ -42,6 +44,11 @@ Tested on:
 
 Home/End are `MOVE_HOME`/`MOVE_END` (text editing), not the Android Home screen
 button. Escape and Delete are unchanged.
+
+**Meta is the Fn key.** A plain press sends the F-key/Home/End, and Ctrl or Alt
+stay on that event. Press Meta (alone or with Ctrl/Alt/Shift) to send the
+original Lenovo key instead. For example, Meta+Volume Down changes the volume,
+Meta+Lock locks the screen, and Alt+F4 reaches an RDP session as Alt+F4.
 
 ## Install
 
@@ -82,12 +89,14 @@ cat -v
 ```
 
 - **Silent** → F1 escape sequence, not mute.
-- **Ctrl+Alt+Volume Up** → volume goes up.
-- **Ctrl+Alt+Lock** → screen locks.
+- **Alt+F4** in an RDP session → reaches the remote.
+- **Ctrl+F4** / **Shift+F4** → reach the app unchanged.
+- **Meta+Volume Down** → volume goes down (original action).
+- **Meta+Lock** → screen locks.
 - **AI key** → Home (start of line).
 - **App key** → End (end of line).
-- **Ctrl+Alt+AI** → original Lenovo Smart Key action.
-- **Ctrl+Alt+App** → original App to Customize action.
+- **Meta+AI** → original Lenovo Smart Key action.
+- **Meta+App** → original App to Customize action.
 - In the TR layout, type `ı ş ğ ü ö ç` to confirm Turkish characters.
 
 ## How it works
@@ -95,15 +104,19 @@ cat -v
 Android physical keyboards use a KCM (Key Character Map) file selected in the
 physical-keyboard settings. This project ships a `type OVERLAY` KCM that:
 
-- maps the 12 top-row keycodes to F1–F12
-- maps APP1/APP2 to `MOVE_HOME`/`MOVE_END`
-- maps Ctrl/Alt/Meta combinations back to the original keycodes
+- maps the physical top-row keys to F1–F12 at the scan/usage level
+- maps the AI/App keys to `MOVE_HOME`/`MOVE_END` the same way
+- maps Meta combinations back to the original Lenovo keycodes
+
+Ctrl and Alt are deliberately left on the target key event. Only Meta is
+treated as Fn, which is why Alt+F4 survives.
 
 The KCM is packaged into an APK with the [ExKeyMo](https://github.com/ris58h/exkeymo)
 layout template. No root, input injection, or accessibility service is needed.
 
-The TR build uses the AOSP Turkish Q KCM as its base, then adds the same 14 key
-blocks. The EN build layers those blocks over the system's generic US base.
+The TR build uses the AOSP Turkish Q KCM as its base, then appends the KB500U
+remap section. The EN build layers that section over the system's generic US
+base.
 
 ## Repo layout
 
@@ -140,6 +153,13 @@ the old copy first.
   **Keyboard layout** entry on the same screen.
 - TR uses the AOSP Turkish Q layout; Turkish F is not included.
 - Home/End are text-editing keys, not the Android Home button.
+
+## Changelog
+
+- **v1.2** — Meta is the only Fn modifier; Ctrl/Alt pass through, so Alt+F4
+  works in RDP.
+- **v1.1** — EN and TR builds; AI/App keys become Home/End.
+- **v1.0** — initial F1–F12 remap.
 
 ## License
 

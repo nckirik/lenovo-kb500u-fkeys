@@ -2,279 +2,231 @@ type OVERLAY
 
 # Lenovo KB500U top row -> F1..F12, plus Home/End for AI/App.
 #
-# Plain press (with or without Shift) sends the F key, or Home/End
-# for the AI and App keys. Home/End means MOVE_HOME/MOVE_END, the
-# text-editing keys, not the Android Home button.
+# The physical keys are remapped to the target keycode at the scan/usage
+# level. Ctrl and Alt are left on the event, so Alt+F4, Ctrl+F4, etc.
+# reach the application unchanged (for example an RDP client).
 #
-# Any press containing Ctrl, Alt or Meta sends the original Lenovo
-# key instead, with every modifier in the combination stripped,
-# including Shift. This keeps the original action available on
-# combinations such as Ctrl+Meta+Alt+key.
+# Meta acts as the Fn modifier. Any Meta combination sends the original
+# Lenovo key instead, with the modifiers stripped.
 #
 # Escape and Delete are deliberately left untouched.
 
-# Silent
-key LENOVO_VOLUME_MUTE {
-    base: replace F1
+# BEGIN KB500U REMAP
+# The TR build appends everything from this marker onward to the AOSP
+# Turkish Q base.
+
+# Silent -> F1
+map key 113 F1
+
+# Volume Down -> F2
+map key 114 F2
+map key usage 0x000c00ea F2
+
+# Volume Up -> F3
+map key 115 F3
+map key usage 0x000c00e9 F3
+
+# Mic Mute -> F4
+map key 248 F4
+map key usage 0x000c0391 F4
+
+# Brightness Down -> F5
+map key 224 F5
+map key usage 0x000c0070 F5
+
+# Brightness Up -> F6
+map key 225 F6
+map key usage 0x000c006f F6
+
+# Trackpad -> F7
+map key usage 0x000c0392 F7
+
+# Capture Screen -> F8
+map key 99 F8
+map key usage 0x0000c046 F8
+
+# Full Screen -> F9
+map key usage 0x000c0394 F9
+
+# Split Screen -> F10
+map key usage 0x000c0395 F10
+
+# Device Collaboration -> F11
+map key usage 0x000c0397 F11
+
+# Lock Screen -> F12
+map key usage 0x000c038e F12
+
+# Lenovo Smart Key (AI) -> MOVE_HOME
+map key usage 0x000c0398 MOVE_HOME
+
+# App to Customize -> MOVE_END
+map key usage 0x000c0399 MOVE_END
+
+# Silent: Meta acts as Fn
+key F1 {
     ctrl+alt+meta+shift: replace LENOVO_VOLUME_MUTE
-    ctrl+alt+shift: replace LENOVO_VOLUME_MUTE
     ctrl+meta+shift: replace LENOVO_VOLUME_MUTE
     alt+meta+shift: replace LENOVO_VOLUME_MUTE
-    ctrl+shift: replace LENOVO_VOLUME_MUTE
-    alt+shift: replace LENOVO_VOLUME_MUTE
     meta+shift: replace LENOVO_VOLUME_MUTE
     ctrl+alt+meta: replace LENOVO_VOLUME_MUTE
-    ctrl+alt: replace LENOVO_VOLUME_MUTE
     ctrl+meta: replace LENOVO_VOLUME_MUTE
     alt+meta: replace LENOVO_VOLUME_MUTE
-    ctrl: replace LENOVO_VOLUME_MUTE
-    alt: replace LENOVO_VOLUME_MUTE
     meta: replace LENOVO_VOLUME_MUTE
 }
 
-# Volume Down
-key VOLUME_DOWN {
-    base: replace F2
+# Volume Down: Meta acts as Fn
+key F2 {
     ctrl+alt+meta+shift: replace VOLUME_DOWN
-    ctrl+alt+shift: replace VOLUME_DOWN
     ctrl+meta+shift: replace VOLUME_DOWN
     alt+meta+shift: replace VOLUME_DOWN
-    ctrl+shift: replace VOLUME_DOWN
-    alt+shift: replace VOLUME_DOWN
     meta+shift: replace VOLUME_DOWN
     ctrl+alt+meta: replace VOLUME_DOWN
-    ctrl+alt: replace VOLUME_DOWN
     ctrl+meta: replace VOLUME_DOWN
     alt+meta: replace VOLUME_DOWN
-    ctrl: replace VOLUME_DOWN
-    alt: replace VOLUME_DOWN
     meta: replace VOLUME_DOWN
 }
 
-# Volume Up
-key VOLUME_UP {
-    base: replace F3
+# Volume Up: Meta acts as Fn
+key F3 {
     ctrl+alt+meta+shift: replace VOLUME_UP
-    ctrl+alt+shift: replace VOLUME_UP
     ctrl+meta+shift: replace VOLUME_UP
     alt+meta+shift: replace VOLUME_UP
-    ctrl+shift: replace VOLUME_UP
-    alt+shift: replace VOLUME_UP
     meta+shift: replace VOLUME_UP
     ctrl+alt+meta: replace VOLUME_UP
-    ctrl+alt: replace VOLUME_UP
     ctrl+meta: replace VOLUME_UP
     alt+meta: replace VOLUME_UP
-    ctrl: replace VOLUME_UP
-    alt: replace VOLUME_UP
     meta: replace VOLUME_UP
 }
 
-# Mic Mute
-key MUTE {
-    base: replace F4
+# Mic Mute: Meta acts as Fn
+key F4 {
     ctrl+alt+meta+shift: replace MUTE
-    ctrl+alt+shift: replace MUTE
     ctrl+meta+shift: replace MUTE
     alt+meta+shift: replace MUTE
-    ctrl+shift: replace MUTE
-    alt+shift: replace MUTE
     meta+shift: replace MUTE
     ctrl+alt+meta: replace MUTE
-    ctrl+alt: replace MUTE
     ctrl+meta: replace MUTE
     alt+meta: replace MUTE
-    ctrl: replace MUTE
-    alt: replace MUTE
     meta: replace MUTE
 }
 
-# Brightness Down
-key BRIGHTNESS_DOWN {
-    base: replace F5
+# Brightness Down: Meta acts as Fn
+key F5 {
     ctrl+alt+meta+shift: replace BRIGHTNESS_DOWN
-    ctrl+alt+shift: replace BRIGHTNESS_DOWN
     ctrl+meta+shift: replace BRIGHTNESS_DOWN
     alt+meta+shift: replace BRIGHTNESS_DOWN
-    ctrl+shift: replace BRIGHTNESS_DOWN
-    alt+shift: replace BRIGHTNESS_DOWN
     meta+shift: replace BRIGHTNESS_DOWN
     ctrl+alt+meta: replace BRIGHTNESS_DOWN
-    ctrl+alt: replace BRIGHTNESS_DOWN
     ctrl+meta: replace BRIGHTNESS_DOWN
     alt+meta: replace BRIGHTNESS_DOWN
-    ctrl: replace BRIGHTNESS_DOWN
-    alt: replace BRIGHTNESS_DOWN
     meta: replace BRIGHTNESS_DOWN
 }
 
-# Brightness Up
-key BRIGHTNESS_UP {
-    base: replace F6
+# Brightness Up: Meta acts as Fn
+key F6 {
     ctrl+alt+meta+shift: replace BRIGHTNESS_UP
-    ctrl+alt+shift: replace BRIGHTNESS_UP
     ctrl+meta+shift: replace BRIGHTNESS_UP
     alt+meta+shift: replace BRIGHTNESS_UP
-    ctrl+shift: replace BRIGHTNESS_UP
-    alt+shift: replace BRIGHTNESS_UP
     meta+shift: replace BRIGHTNESS_UP
     ctrl+alt+meta: replace BRIGHTNESS_UP
-    ctrl+alt: replace BRIGHTNESS_UP
     ctrl+meta: replace BRIGHTNESS_UP
     alt+meta: replace BRIGHTNESS_UP
-    ctrl: replace BRIGHTNESS_UP
-    alt: replace BRIGHTNESS_UP
     meta: replace BRIGHTNESS_UP
 }
 
-# Trackpad
-key TP_MUTE {
-    base: replace F7
+# Trackpad: Meta acts as Fn
+key F7 {
     ctrl+alt+meta+shift: replace TP_MUTE
-    ctrl+alt+shift: replace TP_MUTE
     ctrl+meta+shift: replace TP_MUTE
     alt+meta+shift: replace TP_MUTE
-    ctrl+shift: replace TP_MUTE
-    alt+shift: replace TP_MUTE
     meta+shift: replace TP_MUTE
     ctrl+alt+meta: replace TP_MUTE
-    ctrl+alt: replace TP_MUTE
     ctrl+meta: replace TP_MUTE
     alt+meta: replace TP_MUTE
-    ctrl: replace TP_MUTE
-    alt: replace TP_MUTE
     meta: replace TP_MUTE
 }
 
-# Capture Screen
-key SYSRQ {
-    base: replace F8
+# Capture Screen: Meta acts as Fn
+key F8 {
     ctrl+alt+meta+shift: replace SYSRQ
-    ctrl+alt+shift: replace SYSRQ
     ctrl+meta+shift: replace SYSRQ
     alt+meta+shift: replace SYSRQ
-    ctrl+shift: replace SYSRQ
-    alt+shift: replace SYSRQ
     meta+shift: replace SYSRQ
     ctrl+alt+meta: replace SYSRQ
-    ctrl+alt: replace SYSRQ
     ctrl+meta: replace SYSRQ
     alt+meta: replace SYSRQ
-    ctrl: replace SYSRQ
-    alt: replace SYSRQ
     meta: replace SYSRQ
 }
 
-# Full Screen
-key FULL_SCREEN {
-    base: replace F9
+# Full Screen: Meta acts as Fn
+key F9 {
     ctrl+alt+meta+shift: replace FULL_SCREEN
-    ctrl+alt+shift: replace FULL_SCREEN
     ctrl+meta+shift: replace FULL_SCREEN
     alt+meta+shift: replace FULL_SCREEN
-    ctrl+shift: replace FULL_SCREEN
-    alt+shift: replace FULL_SCREEN
     meta+shift: replace FULL_SCREEN
     ctrl+alt+meta: replace FULL_SCREEN
-    ctrl+alt: replace FULL_SCREEN
     ctrl+meta: replace FULL_SCREEN
     alt+meta: replace FULL_SCREEN
-    ctrl: replace FULL_SCREEN
-    alt: replace FULL_SCREEN
     meta: replace FULL_SCREEN
 }
 
-# Split Screen
-key SPLIT_SCREEN {
-    base: replace F10
+# Split Screen: Meta acts as Fn
+key F10 {
     ctrl+alt+meta+shift: replace SPLIT_SCREEN
-    ctrl+alt+shift: replace SPLIT_SCREEN
     ctrl+meta+shift: replace SPLIT_SCREEN
     alt+meta+shift: replace SPLIT_SCREEN
-    ctrl+shift: replace SPLIT_SCREEN
-    alt+shift: replace SPLIT_SCREEN
     meta+shift: replace SPLIT_SCREEN
     ctrl+alt+meta: replace SPLIT_SCREEN
-    ctrl+alt: replace SPLIT_SCREEN
     ctrl+meta: replace SPLIT_SCREEN
     alt+meta: replace SPLIT_SCREEN
-    ctrl: replace SPLIT_SCREEN
-    alt: replace SPLIT_SCREEN
     meta: replace SPLIT_SCREEN
 }
 
-# Device Collaboration
-key SUPER_CONNECT {
-    base: replace F11
+# Device Collaboration: Meta acts as Fn
+key F11 {
     ctrl+alt+meta+shift: replace SUPER_CONNECT
-    ctrl+alt+shift: replace SUPER_CONNECT
     ctrl+meta+shift: replace SUPER_CONNECT
     alt+meta+shift: replace SUPER_CONNECT
-    ctrl+shift: replace SUPER_CONNECT
-    alt+shift: replace SUPER_CONNECT
     meta+shift: replace SUPER_CONNECT
     ctrl+alt+meta: replace SUPER_CONNECT
-    ctrl+alt: replace SUPER_CONNECT
     ctrl+meta: replace SUPER_CONNECT
     alt+meta: replace SUPER_CONNECT
-    ctrl: replace SUPER_CONNECT
-    alt: replace SUPER_CONNECT
     meta: replace SUPER_CONNECT
 }
 
-# Lock Screen
-key SCREEN_LOCK {
-    base: replace F12
+# Lock Screen: Meta acts as Fn
+key F12 {
     ctrl+alt+meta+shift: replace SCREEN_LOCK
-    ctrl+alt+shift: replace SCREEN_LOCK
     ctrl+meta+shift: replace SCREEN_LOCK
     alt+meta+shift: replace SCREEN_LOCK
-    ctrl+shift: replace SCREEN_LOCK
-    alt+shift: replace SCREEN_LOCK
     meta+shift: replace SCREEN_LOCK
     ctrl+alt+meta: replace SCREEN_LOCK
-    ctrl+alt: replace SCREEN_LOCK
     ctrl+meta: replace SCREEN_LOCK
     alt+meta: replace SCREEN_LOCK
-    ctrl: replace SCREEN_LOCK
-    alt: replace SCREEN_LOCK
     meta: replace SCREEN_LOCK
 }
 
-# Lenovo Smart Key (AI)
-key APP1 {
-    base: replace MOVE_HOME
+# Lenovo Smart Key (AI): Meta acts as Fn
+key MOVE_HOME {
     ctrl+alt+meta+shift: replace APP1
-    ctrl+alt+shift: replace APP1
     ctrl+meta+shift: replace APP1
     alt+meta+shift: replace APP1
-    ctrl+shift: replace APP1
-    alt+shift: replace APP1
     meta+shift: replace APP1
     ctrl+alt+meta: replace APP1
-    ctrl+alt: replace APP1
     ctrl+meta: replace APP1
     alt+meta: replace APP1
-    ctrl: replace APP1
-    alt: replace APP1
     meta: replace APP1
 }
 
-# App to Customize
-key APP2 {
-    base: replace MOVE_END
+# App to Customize: Meta acts as Fn
+key MOVE_END {
     ctrl+alt+meta+shift: replace APP2
-    ctrl+alt+shift: replace APP2
     ctrl+meta+shift: replace APP2
     alt+meta+shift: replace APP2
-    ctrl+shift: replace APP2
-    alt+shift: replace APP2
     meta+shift: replace APP2
     ctrl+alt+meta: replace APP2
-    ctrl+alt: replace APP2
     ctrl+meta: replace APP2
     alt+meta: replace APP2
-    ctrl: replace APP2
-    alt: replace APP2
     meta: replace APP2
 }
