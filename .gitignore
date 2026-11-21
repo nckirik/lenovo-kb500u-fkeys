@@ -6,4 +6,5 @@
 *.idsig
 *.log
 build/
+dist/
 .DS_Store

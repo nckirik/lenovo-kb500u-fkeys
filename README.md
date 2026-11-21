@@ -115,8 +115,10 @@ physical-keyboard settings. This project ships a `type OVERLAY` KCM that:
 Ctrl and Alt are deliberately left on the target key event. Only Meta is
 treated as Fn, which is why Alt+F4 survives.
 
-The KCM is packaged into an APK with the [ExKeyMo](https://github.com/ris58h/exkeymo)
-layout template. No root, input injection, or accessibility service is needed.
+The KCM is packaged into a minimal layout-provider APK by
+`tools/build_apks.py`; the receiver is metadata-only and the app contains only
+a tiny placeholder class. No root, input injection, or accessibility service is
+needed.
 
 The TR build uses the AOSP Turkish Q KCM as its base, then appends the KB500U
 remap section. The EN build layers that section over the system's generic US
@@ -125,9 +127,11 @@ base.
 ## Repo layout
 
 ```
-apk/       prebuilt signed APKs
-layouts/   KCM sources
-tools/     KCM generators
+.github/   CI and release workflows
+apk/       prebuilt signed APKs (v1.2)
+layouts/   KCM sources + manifest.json
+template/  minimal APK template
+tools/     KCM generators, validator, APK builder
 ```
 
 ## Build
@@ -139,16 +143,33 @@ python3 tools/gen_kcm.py
 python3 tools/build-tr.py
 ```
 
-Package an APK:
+Validate and build every layout in `layouts/manifest.json`:
 
-1. Open <https://ris58h.github.io/exkeymo/complex.html>.
-2. Paste `layouts/kb500u-fkeys-en.kcm` or `layouts/kb500u-fkeys-tr.kcm`.
-3. Download the APK, or rebuild it with `apktool` if you need targetSdk 37,
-   the EN/TR package names, and the labels used here.
+```sh
+python3 tools/validate_kcm.py
+python3 tools/build_apks.py \
+  --ks /path/to/keystore.jks \
+  --ks-pass "$KEYSTORE_PASSWORD" \
+  --key-alias "$KEY_ALIAS" \
+  --key-pass "$KEY_PASSWORD" \
+  --out dist
+```
 
-The prebuilt APKs target Android 17 (targetSdk 37), minSdk 24, and are signed
-with a project-local key. Rebuilding with a different key requires uninstalling
-the old copy first.
+The builder uses `aapt2`, `zipalign`, and `apksigner` with the minimal template
+in `template/`. No Gradle or Android Studio is required. CI builds all layouts
+on PRs and uploads them as the `kb500u-apks` artifact.
+
+## CI and releases
+
+- Pull requests: validate every KCM and build every layout, with APKs uploaded
+  as the `kb500u-apks` artifact.
+- Tags `v*`: build every layout with the release key and publish a GitHub
+  release with the APKs and `SHA256SUMS`.
+- Add a layout by adding a KCM and an entry in `layouts/manifest.json`; see
+  [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+The CI builder defaults to targetSdk 36. Bump `versionCode` in
+`layouts/manifest.json` before tagging a release.
 
 ## Limitations
 
@@ -171,4 +192,5 @@ Apache-2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
 
 The TR base layout is from the Android Open Source Project
 (`packages/InputDevices/res/raw/keyboard_layout_turkish.kcm`, Apache-2.0).
-APK packaging uses the ExKeyMo template by ris58h.
+The v1.0–v1.2 APKs in `apk/` were packaged with the ExKeyMo template by
+ris58h. The CI build uses an original minimal layout-provider template.

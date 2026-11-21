@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platforms;android-36 build-tools;36.0.0"
+
+      - name: Add Android build-tools to PATH
+        run: echo "$ANDROID_HOME/build-tools/36.0.0" >> "$GITHUB_PATH"
+
+      - name: Validate KCMs
+        run: python3 tools/validate_kcm.py
+
+      - name: Create debug keystore
+        run: |
+          keytool -genkeypair -keystore debug.jks -alias debug \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass android -keypass android \
+            -dname "CN=KB500U CI" -noprompt
+
+      - name: Build APKs
+        run: |
+          python3 tools/build_apks.py \
+            --ks debug.jks \
+            --ks-pass android \
+            --key-alias debug \
+            --key-pass android \
+            --out dist
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kb500u-apks
+          path: dist/*.apk
+          if-no-files-found: error

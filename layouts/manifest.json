@@ -1,0 +1,26 @@
+{
+  "versionCode": 4,
+  "versionName": "1.3",
+  "minSdk": 24,
+  "targetSdk": 36,
+  "layouts": [
+    {
+      "id": "en",
+      "package": "ris58h.exkeymo_keyboard_layout.en",
+      "appName": "ExKeyMo EN",
+      "providerLabel": "ExKeyMo EN",
+      "layoutLabel": "ExKeyMo Layout EN",
+      "kcm": "layouts/kb500u-fkeys-en.kcm",
+      "output": "ExKeyMo-KB500U-Fkeys-EN.apk"
+    },
+    {
+      "id": "tr",
+      "package": "ris58h.exkeymo_keyboard_layout.tr",
+      "appName": "ExKeyMo TR",
+      "providerLabel": "ExKeyMo TR",
+      "layoutLabel": "ExKeyMo Layout TR",
+      "kcm": "layouts/kb500u-fkeys-tr.kcm",
+      "output": "ExKeyMo-KB500U-Fkeys-TR.apk"
+    }
+  ]
+}
