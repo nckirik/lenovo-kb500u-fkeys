@@ -58,4 +58,5 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" dist/*.apk dist/SHA256SUMS \
             --title "$GITHUB_REF_NAME" \
+            --notes "**After installing or updating, reselect ExKeyMo Layout EN or ExKeyMo Layout TR for the Lenovo keyboard.**" \
             --generate-notes

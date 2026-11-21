@@ -73,6 +73,10 @@ Meta+Lock locks the screen, and Alt+F4 reaches an RDP session as Alt+F4.
 Both APKs can be installed at once; Android keeps one layout active per
 physical keyboard.
 
+**After installing or updating the APK**, Lenovo may switch the keyboard back
+to the default layout. Reselect **ExKeyMo Layout EN** or **ExKeyMo Layout TR**
+for the Lenovo keyboard.
+
 ### Termux install note
 
 If `termux-open` returns immediately with no installer, set:
@@ -181,6 +185,8 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
 
 ## Changelog
 
+- **v1.3** — CI-built APKs with the self-contained template; reselect the
+  layout after installing or updating.
 - **v1.2** — Meta is the only Fn modifier; Ctrl/Alt pass through, so Alt+F4
   works in RDP.
 - **v1.1** — EN and TR builds; AI/App keys become Home/End.

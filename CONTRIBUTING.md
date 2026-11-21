@@ -107,6 +107,8 @@ key F4 {
   same package name, so uninstall the release build or use a separate device
   when testing changes to EN/TR. A new layout with a new package suffix installs
   alongside the existing ones.
+- After installing a debug APK, reselect the ExKeyMo layout for the Lenovo
+  keyboard; Lenovo may reset the layout when the package changes.
 - Release tags `v*` use the repository signing secrets and publish a GitHub
   release automatically.
 - Maintainers: bump `versionCode` in `layouts/manifest.json` before tagging.
