@@ -1,0 +1,647 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+#
+# Turkish keyboard layout.
+#
+
+type OVERLAY
+
+map key 12 SLASH
+map key 13 MINUS
+map key 43 COMMA
+map key 51 EQUALS
+map key 52 BACKSLASH
+map key 53 PERIOD
+map key 86 PLUS
+
+### ROW 1
+
+key GRAVE {
+    label:                              '"'
+    base:                               '"'
+    shift:                              '\u00e9'
+    ralt:                               '<'
+}
+
+key 1 {
+    label:                              '1'
+    base:                               '1'
+    shift:                              '!'
+    ralt:                               '>'
+}
+
+key 2 {
+    label:                              '2'
+    base:                               '2'
+    shift:                              '\''
+    ralt:                               '\u00a3'
+}
+
+key 3 {
+    label:                              '3'
+    base:                               '3'
+    shift:                              '\u0302'
+    ralt:                               '#'
+}
+
+key 4 {
+    label:                              '4'
+    base:                               '4'
+    shift:                              '+'
+    ralt:                               '$'
+}
+
+key 5 {
+    label:                              '5'
+    base:                               '5'
+    shift:                              '%'
+    ralt:                               '\u00bd'
+}
+
+key 6 {
+    label:                              '6'
+    base:                               '6'
+    shift:                              '&'
+}
+
+key 7 {
+    label:                              '7'
+    base:                               '7'
+    shift:                              '/'
+    ralt:                               '{'
+}
+
+key 8 {
+    label:                              '8'
+    base:                               '8'
+    shift:                              '('
+    ralt:                               '['
+}
+
+key 9 {
+    label:                              '9'
+    base:                               '9'
+    shift:                              ')'
+    ralt:                               ']'
+}
+
+key 0 {
+    label:                              '0'
+    base:                               '0'
+    shift:                              '='
+    ralt:                               '}'
+}
+
+key SLASH {
+    label:                              '*'
+    base:                               '*'
+    shift:                              '?'
+    ralt:                               '\\'
+}
+
+key MINUS {
+    label:                              '-'
+    base:                               '-'
+    shift:                              '_'
+    ralt:                               '|'
+}
+
+### ROW 2
+
+key Q {
+    label:                              'Q'
+    base:                               'q'
+    shift, capslock:                    'Q'
+    shift+capslock:                     'q'
+    ralt:                               '@'
+}
+
+key W {
+    label:                              'W'
+    base:                               'w'
+    shift, capslock:                    'W'
+    shift+capslock:                     'w'
+}
+
+key E {
+    label:                              'E'
+    base:                               'e'
+    shift, capslock:                    'E'
+    shift+capslock:                     'e'
+    ralt:                               '\u20ac'
+}
+
+key R {
+    label:                              'R'
+    base:                               'r'
+    shift, capslock:                    'R'
+    shift+capslock:                     'r'
+}
+
+key T {
+    label:                              'T'
+    base:                               't'
+    shift, capslock:                    'T'
+    shift+capslock:                     't'
+}
+
+key Y {
+    label:                              'Y'
+    base:                               'y'
+    shift, capslock:                    'Y'
+    shift+capslock:                     'y'
+}
+
+key U {
+    label:                              'U'
+    base:                               'u'
+    shift, capslock:                    'U'
+    shift+capslock:                     'u'
+}
+
+key I {
+    label:                              'I'
+    base:                               '\u0131'
+    shift, capslock:                    'I'
+    shift+capslock:                     'i'
+    ralt:                               'i'
+    shift+ralt, capslock+ralt:          '\u0130'
+    shift+capslock+ralt:                'i'
+}
+
+key O {
+    label:                              'O'
+    base:                               'o'
+    shift, capslock:                    'O'
+    shift+capslock:                     'o'
+}
+
+key P {
+    label:                              'P'
+    base:                               'p'
+    shift, capslock:                    'P'
+    shift+capslock:                     'p'
+}
+
+key LEFT_BRACKET {
+    label:                              '\u011e'
+    base:                               '\u011f'
+    shift, capslock:                    '\u011e'
+    shift+capslock:                     '\u011f'
+    ralt:                               '\u0308'
+}
+
+key RIGHT_BRACKET {
+    label:                              '\u00dc'
+    base:                               '\u00fc'
+    shift, capslock:                    '\u00dc'
+    shift+capslock:                     '\u00fc'
+    ralt:                               '\u0303'
+}
+
+### ROW 3
+
+key A {
+    label:                              'A'
+    base:                               'a'
+    shift, capslock:                    'A'
+    shift+capslock:                     'a'
+    ralt:                               '\u00e6'
+    shift+ralt, capslock+ralt:          '\u00c6'
+    shift+capslock+ralt:                '\u00e6'
+}
+
+key S {
+    label:                              'S'
+    base:                               's'
+    shift, capslock:                    'S'
+    shift+capslock:                     's'
+    ralt:                               '\u00df'
+}
+
+key D {
+    label:                              'D'
+    base:                               'd'
+    shift, capslock:                    'D'
+    shift+capslock:                     'd'
+}
+
+key F {
+    label:                              'F'
+    base:                               'f'
+    shift, capslock:                    'F'
+    shift+capslock:                     'f'
+}
+
+key G {
+    label:                              'G'
+    base:                               'g'
+    shift, capslock:                    'G'
+    shift+capslock:                     'g'
+}
+
+key H {
+    label:                              'H'
+    base:                               'h'
+    shift, capslock:                    'H'
+    shift+capslock:                     'h'
+}
+
+key J {
+    label:                              'J'
+    base:                               'j'
+    shift, capslock:                    'J'
+    shift+capslock:                     'j'
+}
+
+key K {
+    label:                              'K'
+    base:                               'k'
+    shift, capslock:                    'K'
+    shift+capslock:                     'k'
+}
+
+key L {
+    label:                              'L'
+    base:                               'l'
+    shift, capslock:                    'L'
+    shift+capslock:                     'l'
+}
+
+key SEMICOLON {
+    label:                              '\u015e'
+    base:                               '\u015f'
+    shift, capslock:                    '\u015e'
+    shift+capslock:                     '\u015f'
+    ralt:                               '\u0301'
+}
+
+key APOSTROPHE {
+    label:                              '\u0130'
+    base:                               'i'
+    shift, capslock:                    '\u0130'
+    shift+capslock:                     'i'
+}
+
+key COMMA {
+    label:                              ','
+    base:                               ','
+    shift:                              ';'
+    ralt:                               '\u0300'
+}
+
+### ROW 4
+
+key PLUS {
+    label:                              '<'
+    base:                               '<'
+    shift:                              '>'
+    ralt:                               '\\'
+}
+
+key Z {
+    label:                              'Z'
+    base:                               'z'
+    shift, capslock:                    'Z'
+    shift+capslock:                     'z'
+}
+
+key X {
+    label:                              'X'
+    base:                               'x'
+    shift, capslock:                    'X'
+    shift+capslock:                     'x'
+}
+
+key C {
+    label:                              'C'
+    base:                               'c'
+    shift, capslock:                    'C'
+    shift+capslock:                     'c'
+}
+
+key V {
+    label:                              'V'
+    base:                               'v'
+    shift, capslock:                    'V'
+    shift+capslock:                     'v'
+}
+
+key B {
+    label:                              'B'
+    base:                               'b'
+    shift, capslock:                    'B'
+    shift+capslock:                     'b'
+}
+
+key N {
+    label:                              'N'
+    base:                               'n'
+    shift, capslock:                    'N'
+    shift+capslock:                     'n'
+}
+
+key M {
+    label:                              'M'
+    base:                               'm'
+    shift, capslock:                    'M'
+    shift+capslock:                     'm'
+}
+
+key EQUALS {
+    label:                              '\u00d6'
+    base:                               '\u00f6'
+    shift, capslock:                    '\u00d6'
+    shift+capslock:                     '\u00f6'
+}
+
+key BACKSLASH {
+    label:                              '\u00c7'
+    base:                               '\u00e7'
+    shift, capslock:                    '\u00c7'
+    shift+capslock:                     '\u00e7'
+}
+
+key PERIOD {
+    label:                              '.'
+    base:                               '.'
+    shift:                              ':'
+}
+
+# Silent
+key LENOVO_VOLUME_MUTE {
+    base: replace F1
+    ctrl+alt+meta+shift: replace LENOVO_VOLUME_MUTE
+    ctrl+alt+shift: replace LENOVO_VOLUME_MUTE
+    ctrl+meta+shift: replace LENOVO_VOLUME_MUTE
+    alt+meta+shift: replace LENOVO_VOLUME_MUTE
+    ctrl+shift: replace LENOVO_VOLUME_MUTE
+    alt+shift: replace LENOVO_VOLUME_MUTE
+    meta+shift: replace LENOVO_VOLUME_MUTE
+    ctrl+alt+meta: replace LENOVO_VOLUME_MUTE
+    ctrl+alt: replace LENOVO_VOLUME_MUTE
+    ctrl+meta: replace LENOVO_VOLUME_MUTE
+    alt+meta: replace LENOVO_VOLUME_MUTE
+    ctrl: replace LENOVO_VOLUME_MUTE
+    alt: replace LENOVO_VOLUME_MUTE
+    meta: replace LENOVO_VOLUME_MUTE
+}
+
+# Volume Down
+key VOLUME_DOWN {
+    base: replace F2
+    ctrl+alt+meta+shift: replace VOLUME_DOWN
+    ctrl+alt+shift: replace VOLUME_DOWN
+    ctrl+meta+shift: replace VOLUME_DOWN
+    alt+meta+shift: replace VOLUME_DOWN
+    ctrl+shift: replace VOLUME_DOWN
+    alt+shift: replace VOLUME_DOWN
+    meta+shift: replace VOLUME_DOWN
+    ctrl+alt+meta: replace VOLUME_DOWN
+    ctrl+alt: replace VOLUME_DOWN
+    ctrl+meta: replace VOLUME_DOWN
+    alt+meta: replace VOLUME_DOWN
+    ctrl: replace VOLUME_DOWN
+    alt: replace VOLUME_DOWN
+    meta: replace VOLUME_DOWN
+}
+
+# Volume Up
+key VOLUME_UP {
+    base: replace F3
+    ctrl+alt+meta+shift: replace VOLUME_UP
+    ctrl+alt+shift: replace VOLUME_UP
+    ctrl+meta+shift: replace VOLUME_UP
+    alt+meta+shift: replace VOLUME_UP
+    ctrl+shift: replace VOLUME_UP
+    alt+shift: replace VOLUME_UP
+    meta+shift: replace VOLUME_UP
+    ctrl+alt+meta: replace VOLUME_UP
+    ctrl+alt: replace VOLUME_UP
+    ctrl+meta: replace VOLUME_UP
+    alt+meta: replace VOLUME_UP
+    ctrl: replace VOLUME_UP
+    alt: replace VOLUME_UP
+    meta: replace VOLUME_UP
+}
+
+# Mic Mute
+key MUTE {
+    base: replace F4
+    ctrl+alt+meta+shift: replace MUTE
+    ctrl+alt+shift: replace MUTE
+    ctrl+meta+shift: replace MUTE
+    alt+meta+shift: replace MUTE
+    ctrl+shift: replace MUTE
+    alt+shift: replace MUTE
+    meta+shift: replace MUTE
+    ctrl+alt+meta: replace MUTE
+    ctrl+alt: replace MUTE
+    ctrl+meta: replace MUTE
+    alt+meta: replace MUTE
+    ctrl: replace MUTE
+    alt: replace MUTE
+    meta: replace MUTE
+}
+
+# Brightness Down
+key BRIGHTNESS_DOWN {
+    base: replace F5
+    ctrl+alt+meta+shift: replace BRIGHTNESS_DOWN
+    ctrl+alt+shift: replace BRIGHTNESS_DOWN
+    ctrl+meta+shift: replace BRIGHTNESS_DOWN
+    alt+meta+shift: replace BRIGHTNESS_DOWN
+    ctrl+shift: replace BRIGHTNESS_DOWN
+    alt+shift: replace BRIGHTNESS_DOWN
+    meta+shift: replace BRIGHTNESS_DOWN
+    ctrl+alt+meta: replace BRIGHTNESS_DOWN
+    ctrl+alt: replace BRIGHTNESS_DOWN
+    ctrl+meta: replace BRIGHTNESS_DOWN
+    alt+meta: replace BRIGHTNESS_DOWN
+    ctrl: replace BRIGHTNESS_DOWN
+    alt: replace BRIGHTNESS_DOWN
+    meta: replace BRIGHTNESS_DOWN
+}
+
+# Brightness Up
+key BRIGHTNESS_UP {
+    base: replace F6
+    ctrl+alt+meta+shift: replace BRIGHTNESS_UP
+    ctrl+alt+shift: replace BRIGHTNESS_UP
+    ctrl+meta+shift: replace BRIGHTNESS_UP
+    alt+meta+shift: replace BRIGHTNESS_UP
+    ctrl+shift: replace BRIGHTNESS_UP
+    alt+shift: replace BRIGHTNESS_UP
+    meta+shift: replace BRIGHTNESS_UP
+    ctrl+alt+meta: replace BRIGHTNESS_UP
+    ctrl+alt: replace BRIGHTNESS_UP
+    ctrl+meta: replace BRIGHTNESS_UP
+    alt+meta: replace BRIGHTNESS_UP
+    ctrl: replace BRIGHTNESS_UP
+    alt: replace BRIGHTNESS_UP
+    meta: replace BRIGHTNESS_UP
+}
+
+# Trackpad
+key TP_MUTE {
+    base: replace F7
+    ctrl+alt+meta+shift: replace TP_MUTE
+    ctrl+alt+shift: replace TP_MUTE
+    ctrl+meta+shift: replace TP_MUTE
+    alt+meta+shift: replace TP_MUTE
+    ctrl+shift: replace TP_MUTE
+    alt+shift: replace TP_MUTE
+    meta+shift: replace TP_MUTE
+    ctrl+alt+meta: replace TP_MUTE
+    ctrl+alt: replace TP_MUTE
+    ctrl+meta: replace TP_MUTE
+    alt+meta: replace TP_MUTE
+    ctrl: replace TP_MUTE
+    alt: replace TP_MUTE
+    meta: replace TP_MUTE
+}
+
+# Capture Screen
+key SYSRQ {
+    base: replace F8
+    ctrl+alt+meta+shift: replace SYSRQ
+    ctrl+alt+shift: replace SYSRQ
+    ctrl+meta+shift: replace SYSRQ
+    alt+meta+shift: replace SYSRQ
+    ctrl+shift: replace SYSRQ
+    alt+shift: replace SYSRQ
+    meta+shift: replace SYSRQ
+    ctrl+alt+meta: replace SYSRQ
+    ctrl+alt: replace SYSRQ
+    ctrl+meta: replace SYSRQ
+    alt+meta: replace SYSRQ
+    ctrl: replace SYSRQ
+    alt: replace SYSRQ
+    meta: replace SYSRQ
+}
+
+# Full Screen
+key FULL_SCREEN {
+    base: replace F9
+    ctrl+alt+meta+shift: replace FULL_SCREEN
+    ctrl+alt+shift: replace FULL_SCREEN
+    ctrl+meta+shift: replace FULL_SCREEN
+    alt+meta+shift: replace FULL_SCREEN
+    ctrl+shift: replace FULL_SCREEN
+    alt+shift: replace FULL_SCREEN
+    meta+shift: replace FULL_SCREEN
+    ctrl+alt+meta: replace FULL_SCREEN
+    ctrl+alt: replace FULL_SCREEN
+    ctrl+meta: replace FULL_SCREEN
+    alt+meta: replace FULL_SCREEN
+    ctrl: replace FULL_SCREEN
+    alt: replace FULL_SCREEN
+    meta: replace FULL_SCREEN
+}
+
+# Split Screen
+key SPLIT_SCREEN {
+    base: replace F10
+    ctrl+alt+meta+shift: replace SPLIT_SCREEN
+    ctrl+alt+shift: replace SPLIT_SCREEN
+    ctrl+meta+shift: replace SPLIT_SCREEN
+    alt+meta+shift: replace SPLIT_SCREEN
+    ctrl+shift: replace SPLIT_SCREEN
+    alt+shift: replace SPLIT_SCREEN
+    meta+shift: replace SPLIT_SCREEN
+    ctrl+alt+meta: replace SPLIT_SCREEN
+    ctrl+alt: replace SPLIT_SCREEN
+    ctrl+meta: replace SPLIT_SCREEN
+    alt+meta: replace SPLIT_SCREEN
+    ctrl: replace SPLIT_SCREEN
+    alt: replace SPLIT_SCREEN
+    meta: replace SPLIT_SCREEN
+}
+
+# Device Collaboration
+key SUPER_CONNECT {
+    base: replace F11
+    ctrl+alt+meta+shift: replace SUPER_CONNECT
+    ctrl+alt+shift: replace SUPER_CONNECT
+    ctrl+meta+shift: replace SUPER_CONNECT
+    alt+meta+shift: replace SUPER_CONNECT
+    ctrl+shift: replace SUPER_CONNECT
+    alt+shift: replace SUPER_CONNECT
+    meta+shift: replace SUPER_CONNECT
+    ctrl+alt+meta: replace SUPER_CONNECT
+    ctrl+alt: replace SUPER_CONNECT
+    ctrl+meta: replace SUPER_CONNECT
+    alt+meta: replace SUPER_CONNECT
+    ctrl: replace SUPER_CONNECT
+    alt: replace SUPER_CONNECT
+    meta: replace SUPER_CONNECT
+}
+
+# Lock Screen
+key SCREEN_LOCK {
+    base: replace F12
+    ctrl+alt+meta+shift: replace SCREEN_LOCK
+    ctrl+alt+shift: replace SCREEN_LOCK
+    ctrl+meta+shift: replace SCREEN_LOCK
+    alt+meta+shift: replace SCREEN_LOCK
+    ctrl+shift: replace SCREEN_LOCK
+    alt+shift: replace SCREEN_LOCK
+    meta+shift: replace SCREEN_LOCK
+    ctrl+alt+meta: replace SCREEN_LOCK
+    ctrl+alt: replace SCREEN_LOCK
+    ctrl+meta: replace SCREEN_LOCK
+    alt+meta: replace SCREEN_LOCK
+    ctrl: replace SCREEN_LOCK
+    alt: replace SCREEN_LOCK
+    meta: replace SCREEN_LOCK
+}
+
+# Lenovo Smart Key (AI)
+key APP1 {
+    base: replace MOVE_HOME
+    ctrl+alt+meta+shift: replace APP1
+    ctrl+alt+shift: replace APP1
+    ctrl+meta+shift: replace APP1
+    alt+meta+shift: replace APP1
+    ctrl+shift: replace APP1
+    alt+shift: replace APP1
+    meta+shift: replace APP1
+    ctrl+alt+meta: replace APP1
+    ctrl+alt: replace APP1
+    ctrl+meta: replace APP1
+    alt+meta: replace APP1
+    ctrl: replace APP1
+    alt: replace APP1
+    meta: replace APP1
+}
+
+# App to Customize
+key APP2 {
+    base: replace MOVE_END
+    ctrl+alt+meta+shift: replace APP2
+    ctrl+alt+shift: replace APP2
+    ctrl+meta+shift: replace APP2
+    alt+meta+shift: replace APP2
+    ctrl+shift: replace APP2
+    alt+shift: replace APP2
+    meta+shift: replace APP2
+    ctrl+alt+meta: replace APP2
+    ctrl+alt: replace APP2
+    ctrl+meta: replace APP2
+    alt+meta: replace APP2
+    ctrl: replace APP2
+    alt: replace APP2
+    meta: replace APP2
+}

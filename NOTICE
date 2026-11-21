@@ -1,0 +1,13 @@
+Lenovo KB500U F-keys
+Copyright 2026 The Lenovo KB500U F-keys contributors
+
+This product includes a modified copy of the Android Open Source Project
+Turkish Q keyboard layout:
+
+  packages/InputDevices/res/raw/keyboard_layout_turkish.kcm
+  Copyright (C) 2012 The Android Open Source Project
+  Licensed under the Apache License, Version 2.0.
+
+APK packaging uses the ExKeyMo template by ris58h:
+
+  https://github.com/ris58h/exkeymo
