@@ -101,9 +101,11 @@ key F4 {
 
 `layouts/kb500u-fkeys-en.kcm` is the reference implementation.
 
-This behavior is at Android's input layer. X11 and other environments that use
-scancodes or intercept keys through accessibility/direct access bypass the KCM
-entirely; the remap is not active there.
+This behavior is at Android's input layer. Lenovo/Yoga keyboards can intercept
+top-row shortcuts; accessibility/direct access is often required to capture
+them, and that layer bypasses the KCM. This is a layer bypass, not a keycode
+difference. Accessibility/X11 consumers need their own keymap; the remap is not
+active there.
 
 ## Signing and releases
 
