@@ -153,7 +153,8 @@ base.
 
 X11 captures keys through an accessibility/direct-input layer, so the Android
 KCM is not applied. The optional [`x11/`](x11/README.md) helper remaps the local
-X server's keycodes for any X11 client.
+X server's keycodes for any X11 client. It requires the client to use the X
+server keymap; raw keycode capture bypasses it.
 
 ## Repo layout
 
@@ -215,6 +216,11 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
   on the normal input pipeline still use the KCM; accessibility/X11 consumers
   handle all shortcuts in their own layer (see
   [`x11/README.md`](x11/README.md) for the top-row X11 keymap).
+- **Raw keycode capture bypasses the X11 keymap.** If an X11 client or stack
+  captures keycodes/scancodes directly, the X server keymap (including the
+  `x11/` helper) is not applied. Disable keycode capture or map the raw
+  keycodes in the capturing layer. This is separate from the Android KCM
+  bypass.
 - X11 window managers may reserve Alt+F4 for **Close Window** (KDE/GNOME).
   Even if a keymap maps F4, the X11 client may never receive Alt+F4; rebind or
   disable the WM shortcut if you need it inside the client.

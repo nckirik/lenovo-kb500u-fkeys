@@ -9,7 +9,9 @@ Android KCM for the whole keyboard.
 
 This helper remaps the top row on the local X server, so any X11 client sees
 F1–F8. Meta, Alt+Tab, and other classic shortcuts are handled by the X11/WM
-layer, not by this helper or the Android KCM.
+layer, not by this helper or the Android KCM. It assumes the client reads keys
+through the X server keymap; if keycode capture is enabled, the client sees raw
+keycodes and this map is bypassed.
 
 This is a layer bypass, not a keycode difference. It is separate from the APK
 and does not affect native Android apps; the KCM remains active where the normal
@@ -34,6 +36,13 @@ cause of the bypass:
 F9–F12 / Home / End were already present in the tested X11 keymap and are not
 remapped here. This is not guaranteed on every X server; verify them with `xev`
 and add the keycodes if needed (see below).
+
+## If keycode capture is enabled
+
+Raw keycode/scancode capture sits below the X server keymap. Both `xmodmap` and
+`x11-keymap` are invisible in that mode; the capturing layer must map the raw
+keycodes. Disable keycode capture to use this helper. This is separate from the
+Android KCM/accessibility bypass.
 
 ## Build
 
