@@ -5,8 +5,8 @@ No-root top-row remap for the **Lenovo Yoga Tab Plus (TB520FU)** with the
 become Home/End, and every original Lenovo action stays available with
 **Meta** (the Fn key). Ctrl and Alt are passed through at the Android input
 layer, so apps that consume Android key events can see Alt+F4. Stacks that read
-raw scancodes (for example X11) bypass the Android KCM, so the remap does not
-apply there.
+raw scancodes or intercept keys through accessibility/direct access (for
+example X11) bypass the Android KCM, so the remap does not apply there.
 
 Tested on:
 
@@ -22,7 +22,8 @@ Tested on:
 - Original actions on any Meta combination; modifiers are stripped
 - Ctrl and Alt are left on the F-key event; Android-key-event consumers see
   Alt+F4/Ctrl+F4 normally
-- Not applicable to scancode-based stacks (X11), which bypass the Android KCM
+- Not applicable to scancode- or accessibility/direct-input stacks (X11), which
+  bypass the Android KCM
 - Shift alone is preserved, so Shift+F1 still works
 - No root, no Key Mapper, no Shizuku
 - EN (US English) and TR (Turkish Q) builds
@@ -53,8 +54,8 @@ button. Escape and Delete are unchanged.
 stay on that event. Press Meta (alone or with Ctrl/Alt/Shift) to send the
 original Lenovo key instead. For example, Meta+Volume Down changes the volume,
 Meta+Lock locks the screen. Alt+F4 is preserved for apps that consume Android
-key events. X11 and other scancode-based stacks bypass the KCM, so the remap
-does not apply there.
+key events. X11 and other scancode/accessibility/direct-input stacks bypass the
+KCM, so the remap does not apply there.
 
 ## Install
 
@@ -82,7 +83,7 @@ physical keyboard.
 
 **After installing or updating the APK**, Lenovo may switch the keyboard back
 to the default layout. Reselect **ExKeyMo Layout EN** or **ExKeyMo Layout TR**
-for the Lenovo keyboard.
+for the Lenovo keyboard, or reboot to force Android to reload the KCM.
 
 ### Termux install note
 
@@ -97,7 +98,7 @@ This lets Termux hand the APK to the package installer.
 
 ## Test
 
-In Termux:
+In the **native Termux Android app** (not inside X11):
 
 ```sh
 cat -v
@@ -115,6 +116,10 @@ cat -v
 - **Meta+App** → original App to Customize action.
 - In the TR layout, type `ı ş ğ ü ö ç` to confirm Turkish characters.
 
+The X11/FreeRDP path is not a reliable test of this layout: X11 can intercept
+keys through scancodes or accessibility/direct access and bypass the Android
+KCM, and its window manager can reserve Alt+F4.
+
 ## How it works
 
 Android physical keyboards use a KCM (Key Character Map) file selected in the
@@ -126,8 +131,8 @@ physical-keyboard settings. This project ships a `type OVERLAY` KCM that:
 
 Ctrl and Alt are deliberately left on the target key event. Only Meta is
 treated as Fn. This preserves Alt+F4 at the Android input layer. X11 and other
-scancode-based stacks bypass the KCM entirely, so the remap is not active
-there.
+scancode/accessibility/direct-input stacks bypass the KCM entirely, so the remap
+is not active there.
 
 The KCM is packaged into a minimal layout-provider APK by
 `tools/build_apks.py`; the receiver is metadata-only and the app contains only
@@ -188,10 +193,15 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
 ## Limitations
 
 - The layout picker applies one KCM per physical keyboard.
-- **Scancode-based stacks bypass the Android KCM.** Any environment that reads
-  raw scancodes (X11 is the known example, independent of RDP) bypasses the
-  remap; the top-row F-key/Home/End mapping and the Alt+F4/Ctrl-preserving
-  behavior do not apply there. The stack's own keyboard handling wins.
+- **Scancode/accessibility/direct-input paths bypass the Android KCM.** Any
+  environment that reads raw scancodes or intercepts keys through accessibility
+  or direct input (X11/remote-desktop setups are known examples, independent of
+  RDP) bypasses the remap; the top-row F-key/Home/End mapping and the
+  Alt+F4/Ctrl-preserving behavior do not apply there. The stack's own keyboard
+  handling wins.
+- X11 window managers commonly reserve Alt+F4 for **Close Window** (KDE/GNOME).
+  Even if the KCM mapping is active, the RDP client may never receive Alt+F4;
+  rebind/disable the WM shortcut or use the client's send-key feature.
 - If the Lenovo Keyboard Pack menu is missing, use
   **Settings → System → Languages & input → Physical keyboard**.
 - TR uses the AOSP Turkish Q layout; Turkish F is not included.
@@ -200,8 +210,8 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
 ## Changelog
 
 - **v1.3** — CI-built APKs with the self-contained template; reselect the
-  layout after installing or updating. Documented that X11/scancode-based
-  stacks bypass the KCM.
+  layout after installing or updating. Documented that X11/scancode/accessibility
+  paths bypass the KCM.
 - **v1.2** — Meta is the only Fn modifier; Ctrl/Alt pass through at the
   Android input layer.
 - **v1.1** — EN and TR builds; AI/App keys become Home/End.

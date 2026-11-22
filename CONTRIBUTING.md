@@ -101,8 +101,9 @@ key F4 {
 
 `layouts/kb500u-fkeys-en.kcm` is the reference implementation.
 
-This behavior is at Android's input layer. X11 and other scancode-based
-environments bypass the KCM entirely; the remap is not active there.
+This behavior is at Android's input layer. X11 and other environments that use
+scancodes or intercept keys through accessibility/direct access bypass the KCM
+entirely; the remap is not active there.
 
 ## Signing and releases
 
