@@ -31,7 +31,9 @@ cause of the bypass:
 | Trackpad | 199 | F7 |
 | Capture Screen | 107 | F8 |
 
-F9–F12 / Home / End already arrive correctly and are not remapped.
+F9–F12 / Home / End were already present in the tested X11 keymap and are not
+remapped here. This is not guaranteed on every X server; verify them with `xev`
+and add the keycodes if needed (see below).
 
 ## Build
 
@@ -81,6 +83,28 @@ succeeds, so the helper verifies the mapping by reading it back. Termux:X11 also
 drops a mapping when the client that changed it disconnects, so `hold` keeps the
 X connection open. On a regular X server, the mapping normally persists for the
 session and `xmodmap` can be used at startup instead.
+
+## Checking the remaining keys
+
+The helper intentionally leaves F9–F12 / Home / End untouched. Verify them on
+the X11 display:
+
+```sh
+xev -event keyboard
+```
+
+Press **Full Screen**, **Split Screen**, **Device Collaboration**, **Lock
+Screen**, **AI**, and **App**. If they already produce F9–F12/Home/End, no
+change is needed. If not, add the keycodes reported by `xev` to `Xmodmap`:
+
+```
+keycode N = F9  F9  F9  F9    # Full Screen
+keycode N = F10 F10 F10 F10   # Split Screen
+keycode N = F11 F11 F11 F11   # Device Collaboration
+keycode N = F12 F12 F12 F12   # Lock Screen
+keycode N = Home Home Home Home
+keycode N = End End End End
+```
 
 ## Notes
 
