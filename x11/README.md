@@ -1,11 +1,15 @@
 # X11 F-key mapping
 
 The Android KCM in this repository only applies to apps that consume Android
-key events. Lenovo/Yoga keyboards often intercept top-row shortcuts through an
-OEM service; accessibility/direct access is frequently the only way to capture
-those keys. That layer — used by X11/Termux:X11 or any X server — bypasses the
-Android KCM. This helper applies the top-row keymap to the local X server, so any
-X11 client sees F1–F8.
+key events. Lenovo/Yoga keyboards often intercept shortcuts through an OEM
+service; accessibility/direct access is frequently the only way to capture the
+Meta key and its combinations, Alt+Tab, and other classic shortcuts, as well as
+the top row. That layer — used by X11/Termux:X11 or any X server — bypasses the
+Android KCM for the whole keyboard.
+
+This helper remaps the top row on the local X server, so any X11 client sees
+F1–F8. Meta, Alt+Tab, and other classic shortcuts are handled by the X11/WM
+layer, not by this helper or the Android KCM.
 
 This is a layer bypass, not a keycode difference. It is separate from the APK
 and does not affect native Android apps; the KCM remains active where the normal

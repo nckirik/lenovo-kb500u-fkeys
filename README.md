@@ -23,7 +23,7 @@ Tested on:
 - Ctrl and Alt are left on the F-key event; Android-key-event consumers see
   Alt+F4/Ctrl+F4 normally
 - Not applicable to accessibility/direct-input consumers (e.g., X11), which
-  bypass the Android KCM
+  bypass the Android KCM for all keys
 - Shift alone is preserved, so Shift+F1 still works
 - No root, no Key Mapper, no Shizuku
 - EN (US English) and TR (Turkish Q) builds
@@ -118,9 +118,9 @@ cat -v
 
 X11 is not a reliable test of this layout: it captures keys through an
 accessibility/direct-input layer, bypassing the Android KCM. On Yoga, enabling
-accessibility to capture the top row also bypasses the KCM. Configure the X11
-side separately; see [`x11/README.md`](x11/README.md). An X11 window manager can
-also reserve Alt+F4.
+accessibility to capture the top row, Meta combos, Alt+Tab, etc. also bypasses
+the KCM for all keys. Configure the X11 side separately; see
+[`x11/README.md`](x11/README.md). An X11 window manager can also reserve Alt+F4.
 
 ## How it works
 
@@ -135,6 +135,10 @@ Ctrl and Alt are deliberately left on the target key event. Only Meta is
 treated as Fn. This preserves Alt+F4 at the Android input layer. X11 and other
 accessibility/direct-input consumers bypass the KCM entirely, so the remap is
 not active there.
+
+This is a whole-keyboard bypass, not just the top-row remap: when
+accessibility/direct input is active, Meta, Alt+Tab, and other classic
+shortcuts are handled by that layer, not by the KCM.
 
 The KCM is packaged into a minimal layout-provider APK by
 `tools/build_apks.py`; the receiver is metadata-only and the app contains only
@@ -202,13 +206,15 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
 ## Limitations
 
 - The layout picker applies one KCM per physical keyboard.
-- **Lenovo/Yoga interception and accessibility bypass the Android KCM.** Yoga
-  keyboards can route top-row shortcuts through Lenovo's service; enabling
-  accessibility/direct access is often the only way to capture those keys, but
-  that layer bypasses the Android KCM. This is a layer bypass, not a keycode
-  difference. Native apps on the normal input pipeline still use the KCM;
-  accessibility/X11 consumers need their own keymap (see
-  [`x11/README.md`](x11/README.md)).
+- **Lenovo/Yoga interception and accessibility bypass the Android KCM for all
+  keys.** Yoga keyboards can route shortcuts through Lenovo's service.
+  Accessibility/direct access is often the only way to capture the Meta key and
+  its combinations, Alt+Tab, and other classic shortcuts, as well as the top
+  row. That layer bypasses the Android KCM for the whole keyboard, not just the
+  remapped keys. This is a layer bypass, not a keycode difference. Native apps
+  on the normal input pipeline still use the KCM; accessibility/X11 consumers
+  handle all shortcuts in their own layer (see
+  [`x11/README.md`](x11/README.md) for the top-row X11 keymap).
 - X11 window managers may reserve Alt+F4 for **Close Window** (KDE/GNOME).
   Even if a keymap maps F4, the X11 client may never receive Alt+F4; rebind or
   disable the WM shortcut if you need it inside the client.
@@ -221,7 +227,8 @@ The CI builder defaults to targetSdk 36. Bump `versionCode` in
 
 - **v1.3** — CI-built APKs with the self-contained template; reselect the
   layout after installing or updating. Documented that the
-  accessibility/direct-input layer (Lenovo/Yoga, X11) bypasses the KCM.
+  accessibility/direct-input layer (Lenovo/Yoga, X11) bypasses the KCM for all
+  keys.
 - **v1.2** — Meta is the only Fn modifier; Ctrl/Alt pass through at the
   Android input layer.
 - **v1.1** — EN and TR builds; AI/App keys become Home/End.
