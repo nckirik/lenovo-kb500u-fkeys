@@ -1,0 +1,25 @@
+! KB500U top row -> F1-F8 on the remote X server.
+! Use with: xmodmap ~/.Xmodmap
+!
+! The TR APK layout is for Android; for X11 use the EN APK layout plus the
+! X server's Turkish Q layout. This file only remaps the top-row media keys.
+!
+! Verify keycodes with `xev` on the remote if yours differ.
+
+keycode 121 = F1 F1 F1 F1
+keycode 122 = F2 F2 F2 F2
+keycode 123 = F3 F3 F3 F3
+keycode 198 = F4 F4 F4 F4
+keycode 248 = F4 F4 F4 F4
+keycode 232 = F5 F5 F5 F5
+keycode 233 = F6 F6 F6 F6
+keycode 199 = F7 F7 F7 F7
+keycode 107 = F8 F8 F8 F8
+
+! If your remote does not already produce these, uncomment and set the keycodes:
+! keycode N = F9  F9  F9  F9
+! keycode N = F10 F10 F10 F10
+! keycode N = F11 F11 F11 F11
+! keycode N = F12 F12 F12 F12
+! keycode N = Home Home Home Home
+! keycode N = End End End End

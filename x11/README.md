@@ -41,8 +41,58 @@ and add the keycodes if needed (see below).
 
 Raw keycode/scancode capture sits below the X server keymap. Both `xmodmap` and
 `x11-keymap` are invisible in that mode; the capturing layer must map the raw
-keycodes. Disable keycode capture to use this helper. This is separate from the
-Android KCM/accessibility bypass.
+keycodes. Disable keycode capture to use this helper, or map the top row on the
+remote X server (below). This is separate from the Android KCM/accessibility
+bypass.
+
+## If keycode capture is enabled (remote X server)
+
+If scancode capture is required for the Turkish layout, map the top row on the
+remote X server. With scancode capture, the capture layer reads scancodes
+directly; the remote X server is where they are interpreted.
+
+1. Copy `x11/Xmodmap.xmodmap` to the remote as `~/.Xmodmap`.
+2. Apply it:
+
+   ```sh
+   xmodmap ~/.Xmodmap
+   ```
+
+3. Add an autostart entry so KDE reapplies it after login:
+
+   ```ini
+   # ~/.config/autostart/kb500u-fkeys.desktop
+   [Desktop Entry]
+   Type=Application
+   Name=KB500U F-keys
+   Exec=sh -c 'sleep 5; xmodmap "$HOME/.Xmodmap"'
+   X-GNOME-Autostart-enabled=true
+   ```
+
+4. If `xmodmap` is missing, install `x11-xserver-utils`
+   (Debian/Ubuntu/Neon).
+5. Clear the remote WM's Alt+F4 shortcut if needed.
+
+This only remaps the top-row media keycodes; the remote Turkish XKB layout
+continues to handle the letters. The local X11 helper is not used in this mode.
+
+## Turkish layout in X11
+
+Use exactly one Turkish layer. The TR APK layout is a full Turkish Q character
+map for native Android. If the X server/XKB is also Turkish Q, Turkish is
+applied twice.
+
+For X11:
+
+- Select the **EN** APK layout on Android; it still maps the top row.
+- Set the X server to Turkish Q: `setxkbmap tr` (empty variant is Q; `tr f` is
+  Turkish F). Verify with `setxkbmap -query`.
+- In Turkish Q, the physical I key is ı; the dotted i is on the apostrophe key.
+- If keycode capture is on, use the remote xmodmap above; if off, use the local
+  x11 helper.
+
+If the Turkish keys still fail, check that the remote is Q and not F, and that
+the Android layout is EN (not TR) while the X server is Turkish.
 
 ## Build
 

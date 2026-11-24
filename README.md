@@ -57,6 +57,16 @@ Meta+Lock locks the screen. Alt+F4 is preserved for apps that consume Android
 key events. X11 and other accessibility/direct-input consumers bypass the KCM,
 so the remap does not apply there.
 
+## EN vs TR (and X11)
+
+- **EN** keeps the normal US base characters. Use it for native Android when you
+  do not need Turkish characters from the KCM, and for X11 where the X server
+  has its own Turkish layout.
+- **TR** adds the AOSP Turkish Q base. Use it for native Android Turkish.
+- Do not combine the TR APK layout with a Turkish XKB layout: that applies
+  Turkish twice and produces wrong/missing characters. For X11, use the **EN**
+  layout on Android and set the X server to Turkish Q.
+
 ## Install
 
 1. Download the latest APK from
@@ -155,6 +165,11 @@ X11 captures keys through an accessibility/direct-input layer, so the Android
 KCM is not applied. The optional [`x11/`](x11/README.md) helper remaps the local
 X server's keycodes for any X11 client. It requires the client to use the X
 server keymap; raw keycode capture bypasses it.
+
+For Turkish X11 input, use the **EN** APK layout plus the X server's Turkish Q
+layout. The **TR** APK layout is for native Android. If keycode capture is
+required, use [`x11/Xmodmap.xmodmap`](x11/Xmodmap.xmodmap) on the remote X
+server.
 
 ## Repo layout
 
