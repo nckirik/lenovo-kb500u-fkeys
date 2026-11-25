@@ -100,6 +100,15 @@ For X11:
 If the Turkish keys still fail, check that the remote is Q and not F, and that
 the Android layout is EN (not TR) while the X server is Turkish.
 
+## Client-side remap / Unicode options
+
+Some X11 clients can send Unicode keyboard events for printable keys or remap
+known scancodes. Unicode mode can make the physical keyboard behave like a soft
+keyboard; test shortcuts separately. Scancode remapping only covers keys the
+client knows; vendor media keys may not have a scancode. The remote xmodmap above
+is the complete top-row workaround; the local helper works when keycode capture
+is off.
+
 ## Build
 
 `x11-keymap` is a small Xlib helper:
