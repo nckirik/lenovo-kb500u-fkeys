@@ -82,6 +82,12 @@ Use exactly one Turkish layer. The TR APK layout is a full Turkish Q character
 map for native Android. If the X server/XKB is also Turkish Q, Turkish is
 applied twice.
 
+A useful test is the soft/on-screen keyboard: it usually sends the underlying US
+positions, so the remote Turkish Q layout translates once. If the soft keyboard
+gives `.`→ç and `/`→`.`, the remote layout is correct. The physical TR APK
+layout, by contrast, remaps punctuation keycodes before X11 sees them, so the
+remote translates a second time. Use the EN APK layout for X11.
+
 For X11:
 
 - Select the **EN** APK layout on Android; it still maps the top row.

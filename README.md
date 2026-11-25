@@ -66,6 +66,9 @@ so the remap does not apply there.
 - Do not combine the TR APK layout with a Turkish XKB layout: that applies
   Turkish twice and produces wrong/missing characters. For X11, use the **EN**
   layout on Android and set the X server to Turkish Q.
+- A soft keyboard can verify the remote layout: if it produces the Turkish Q
+  punctuation mapping (`.`→ç, `/`→`.`), the remote is correct. The physical TR
+  APK layout remaps punctuation keycodes first, so it adds a second translation.
 
 ## Install
 
