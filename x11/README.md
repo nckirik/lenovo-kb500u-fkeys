@@ -84,9 +84,10 @@ applied twice.
 
 A useful test is the soft/on-screen keyboard: it usually sends the underlying US
 positions, so the remote Turkish Q layout translates once. If the soft keyboard
-gives `.`→ç and `/`→`.`, the remote layout is correct. The physical TR APK
-layout, by contrast, remaps punctuation keycodes before X11 sees them, so the
-remote translates a second time. Use the EN APK layout for X11.
+gives `.`→ç and `/`→`.`, the remote layout is correct. The physical EN APK
+layout should match that; the physical TR APK layout, by contrast, remaps
+punctuation keycodes before X11 sees them, so the remote translates a second
+time. Use the EN APK layout for X11 when the remote XKB is Turkish.
 
 For X11:
 
@@ -104,10 +105,11 @@ the Android layout is EN (not TR) while the X server is Turkish.
 
 Some X11 clients can send Unicode keyboard events for printable keys or remap
 known scancodes. Unicode mode can make the physical keyboard behave like a soft
-keyboard; test shortcuts separately. Scancode remapping only covers keys the
-client knows; vendor media keys may not have a scancode. The remote xmodmap above
-is the complete top-row workaround; the local helper works when keycode capture
-is off.
+keyboard, but it sends the **local** characters and bypasses the remote layout;
+it only fixes Turkish if the local XKB/IME produces Turkish. Test shortcuts
+separately. Scancode remapping only covers keys the client knows; vendor media
+keys may not have a scancode. The remote xmodmap above is the complete top-row
+workaround; the local helper works when keycode capture is off.
 
 ## Build
 
